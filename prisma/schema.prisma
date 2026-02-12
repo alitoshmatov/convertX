@@ -34,6 +34,8 @@ model Conversion {
   id           String   @id @default(cuid())
   userId       String
   user         User     @relation(fields: [userId], references: [id])
+  fileName     String?
+  fileSize     Int?
   inputFormat  String
   outputFormat String
   status       String   @default("pending") // pending | processing | completed | failed

@@ -1,6 +1,7 @@
 interface PendingConversion {
   fileId: string;
   fileName: string;
+  fileSize: number | undefined;
   sourceExtension: string;
   userId: string;
   chatId: number;

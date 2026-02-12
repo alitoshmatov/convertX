@@ -148,6 +148,7 @@ export const documentHandler = async (ctx: Context) => {
   const pendingId = addPending({
     fileId: fileInfo.fileId,
     fileName: fileInfo.fileName,
+    fileSize: fileInfo.fileSize,
     sourceExtension: extension,
     userId: ctx.user.id,
     chatId: ctx.chat.id,

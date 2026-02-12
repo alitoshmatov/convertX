@@ -56,6 +56,8 @@ export const convertCallbackHandler = async (ctx: Context) => {
   const conversion = await prisma.conversion.create({
     data: {
       userId: ctx.user.id,
+      fileName: pending.fileName,
+      fileSize: pending.fileSize,
       inputFormat: fromExt,
       outputFormat: targetFormat,
       status: "pending",
