@@ -48,11 +48,10 @@ bot.on("message:text", async (ctx) => {
 bot.catch((err) => {
   const ctx = err.ctx;
   console.error(`Error during update ${ctx.update.update_id}:`, err);
+  const errorMessage = err.error instanceof Error ? err.error.message : String(err.error);
   notifyOwner(
     ctx,
-    `Error occurred while handling update from ${ctx.from?.first_name} (ID: ${
-      ctx.from?.id
-    }):\n${JSON.stringify(err)}`
+    `Error occurred while handling update from ${ctx.from?.first_name} (ID: ${ctx.from?.id}):\n${errorMessage}`
   );
 });
 
