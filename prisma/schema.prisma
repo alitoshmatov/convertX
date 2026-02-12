@@ -26,4 +26,18 @@ model User {
 
   referrerId String  @default("")
   isBlocked  Boolean @default(false)
+
+  conversions Conversion[]
+}
+
+model Conversion {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  inputFormat  String
+  outputFormat String
+  status       String   @default("pending") // pending | processing | completed | failed
+  errorMessage String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
